@@ -10,7 +10,7 @@ public class JumpPadScript : MonoBehaviour
     [SerializeField] private float forceAmount = 1f;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioSource jumpSoundSource;
-    [SerializeField] private bool clearsForceOnExit = true;
+    [SerializeField] private bool clearsForceOnExit = false;
 
     // Start is called before the first frame update
     void Start()
