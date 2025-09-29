@@ -10,6 +10,7 @@ public class JumpPadScript : MonoBehaviour
     [SerializeField] private float forceAmount = 1f;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioSource jumpSoundSource;
+    [SerializeField] private bool clearsForceOnExit = true;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,13 @@ public class JumpPadScript : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
+        if (clearsForceOnExit && toMove != null)
+        {
+            foreach (Rigidbody rb in toMove)
+            {
+                rb.velocity = Vector3.zero;
+            }
+        }
         toMove = null;
     }
 
