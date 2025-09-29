@@ -5,6 +5,7 @@ public class AddForce : MonoBehaviour
 {
     private Rigidbody[] toMove = null;
     [SerializeField] private float forceAmount = 1f;
+    [SerializeField] private bool clearsForceOnExit = true;
 
     void Start()
     {
@@ -34,6 +35,13 @@ public class AddForce : MonoBehaviour
     // Esci dall’acqua (trigger)
     void OnTriggerExit(Collider other)
     {
+        if (clearsForceOnExit && toMove != null)
+        {
+            foreach (Rigidbody rb in toMove)
+            {
+                rb.velocity = Vector3.zero;
+            }
+        }
         toMove = null;
     }
 }
